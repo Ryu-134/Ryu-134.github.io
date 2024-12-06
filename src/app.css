@@ -1,3 +1,31 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities'
+@import 'tailwindcss/utilities';
+
+/* Color Palette */
+    /*  Background: HEX = 000000, HSL = 0, 0, 0
+        Text: White OR Very light gray OR light gray       
+        Primary: HEX = 0C1821, HSL = 206, 47, 9
+        Secondary: HEX = 1B2A41, HSL = 216, 41, 18
+        Accent: HEX = 324A5F, HSL = 208, 31, 28
+    */
+
+/* Animations: */
+    /* 
+        1. Background: dynamic moving stars 
+        2. General page entrance: fade in
+        3. Text: once page initially fades in: slit in, to make look like text loads in once page was done loading 
+        4. Text Effects: once text is slit in have constatn gradient of color from color palette moving over my name for attention grab
+    */
+
+
+body {
+    @apply w-full h-screen bg-black;
+    background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent),
+        radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent);
+    }
+
+canvas {
+    @apply fixed w-full h-full;
+}
+    
