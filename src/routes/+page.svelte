@@ -182,9 +182,15 @@
     <div class="flex flex-col items-center justify-center text-center text-white relative z-10 min-h-screen">
         <!-- Text Section -->
         <div class="space-y-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light"> Hi, my name is</h2>
-            <h1 class="text-6xl sm:text-7xl md:text-8xl font-bold">Casey Dane</h1>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-medium"> I am a </h3>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light"> 
+                Hi, my name is
+            </h2>
+            <h1 class="text-6xl sm:text-7xl md:text-8xl font-bold">
+                Casey Dane
+            </h1>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-medium text-center "> I am a software&nbsp;
+                <span class="typewriter thick"></span>
+            </h3>
             <h3 class="text-lg sm:text-xl md:text-2xl font-light">
                 Currently I am a student at CSUF
             </h3>

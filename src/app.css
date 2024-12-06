@@ -2,6 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+
 /* Color Palette */
     /*  Background: HEX = 000000, HSL = 0, 0, 0
         Text: White OR Very light gray OR light gray       
@@ -18,7 +21,6 @@
         4. Text Effects: once text is slit in have constatn gradient of color from color palette moving over my name for attention grab
     */
 
-
 body {
     @apply w-full h-screen bg-black;
     background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent),
@@ -29,3 +31,95 @@ canvas {
     @apply fixed w-full h-full;
 }
     
+/* Typewriter Animation */
+.typewriter {
+    --caret: currentcolor; /* Use current text color for the caret */
+    display: inline-block; /* Ensure the typewriter span has reserved space */
+    min-width: 10ch; /* Reserve space for the longest word ("architect") */
+    text-align: left; /* Align the text inside the reserved space */
+    margin-left: -0.25em; /* Reduce unnecessary space before the animated text */
+
+    vertical-align: top; /* Ensure alignment with surrounding text */
+}
+
+.typewriter::before {
+    content: ""; /* Content dynamically updated by animation */
+    animation: typing 12s steps(58) infinite; /* Adjust steps to match total characters (letter count + spaces)*/
+}
+
+.typewriter::after {
+    content: ""; /* Caret for the typewriter */
+    border-right: 1ch solid var(--caret); /* Blinking caret effect */
+    animation: blink 0.7s step-end infinite; /* Caret blinking */
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion) {
+    .typewriter::after {
+        animation: none; /* Disable blinking caret for reduced motion */
+    }
+
+    @keyframes sequencePopup {
+        0%, 100% { content: "engineer"; }
+        34% { content: "developer"; }
+        67% { content: "architect"; }
+    }
+
+    .typewriter::before {
+        content: "engineer"; /* Default starting content */
+        animation: sequencePopup 12s linear infinite; /* Smooth sequence transitions */
+    }
+}
+
+/* Keyframes for typing each phrase */
+@keyframes typing {
+    /* There are 26 characters so space out percentage evenly; 1.5% interval per character; 2% between words; 5.333% pause between type out and delete   */
+    /* Phrase 1: "engineer" - 8 characters*/
+    1.500%, 30.800% { content: ""; }
+    3.000%, 29.300% { content: "e"; }
+    4.500%, 27.800% { content: "en"; }
+    6.000%, 26.300% { content: "eng"; }
+    7.500%, 24.800% { content: "engi"; }
+    9.000%, 23.300% { content: "engin"; }
+    10.500%, 21.800% { content: "engine"; }
+    12.000%, 20.300% { content: "enginee"; }
+    13.500%, 18.800% { content: "engineer"; }
+
+    /* Pause before next phrase - 9 characters*/
+    30.900%, 32.900% { content: ""; }
+
+    /* Phrase 2: "developer - 9 characters" */
+    33.0%, 62.300% { content: ""; }
+    34.500%, 60.800% { content: "d"; }
+    36.000%, 59.300% { content: "de"; }
+    37.500%, 57.800% { content: "dev"; }
+    39.000%, 56.300% { content: "deve"; }
+    40.500%, 54.800% { content: "devel"; }
+    42.000%, 53.300% { content: "develop"; }
+    43.500%, 51.800% { content: "develope"; }
+    45.000%, 50.300% { content: "developer"; }
+
+    /* Pause before next phrase */
+    62.400%, 64.400% { content: ""; }
+
+    /* Phrase 3: "architect" */
+    64.500%, 96.800% { content: ""; }
+    66.000%, 95.300% { content: "a"; }
+    67.500%, 93.800% { content: "ar"; }
+    69.000%, 92.300% { content: "arc"; }
+    70.500%, 90.800% { content: "arch"; }
+    72.000%, 89.300% { content: "archi"; }
+    73.500%, 87.800% { content: "archit"; }
+    75.000%, 86.300% { content: "archite"; }
+    76.500%, 84.800% { content: "architec"; }
+    78.000%, 83.300% { content: "architect"; }
+
+    /* Pause at the end */
+    96.9%, 100.000% { content: ""; }
+}
+
+/* Keyframes for blinking caret */
+@keyframes blink {
+    0%, 100% { opacity: 1; } /* Caret is visible */
+    50% { opacity: 0; } /* Caret blinks */
+}
