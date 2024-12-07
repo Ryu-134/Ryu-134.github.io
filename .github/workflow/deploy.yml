@@ -4,13 +4,22 @@ on:
   push:
     branches: 
       - main
-
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'svelte.config.js'
+      - '.github/workflows/deploy.yml'
 jobs:
-  build_site:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
+      # potentially remove: should work without having to force clear   
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -19,31 +28,25 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps --prefer-online
 
+
+      # potentially remove: should work without having to force clear 
+      - name: Clean build directory
+        run: rm -rf build
+      
       - name: Build the site
         env:
+          BASE_PATH: ''
           NODE_ENV: production
         run: npm run build
 
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'build/'
-
-  deploy:
-    needs: build_site
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
+      - name: Verify build output
+        run: test -d build || (echo "Build directory missing" && exit 1)
+      
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
+       
