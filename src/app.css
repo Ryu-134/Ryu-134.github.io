@@ -134,5 +134,5 @@ canvas {
 
 .slit-in-vertical-normal { 
     animation: slit-in-vertical 0.40s ease-out 0s 1 normal both; 
-    animation-delay: 2.3s;
+    animation-delay: 2.5s;
 }

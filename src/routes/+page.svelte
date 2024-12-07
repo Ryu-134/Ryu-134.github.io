@@ -174,14 +174,14 @@
     localCanvas.addEventListener('mouseleave', onMouseLeave);
     });
 </script>
-
+<!-- 
 Temporariliy remove animations:
 fade-in-normal
 slit-in-vertical-normal
-slit-in-vertical-normal
+slit-in-vertical-normal -->
   <div class="min-h-screen relative bg-black overflow-hidden">
-    <canvas id="stars" class="absolute inset-0 pointer-events-none"></canvas>
-    <div class="flex flex-col items-center justify-center text-center text-white relative z-10 min-h-screen">
+    <canvas id="stars" class="absolute inset-0 pointer-events-none fade-in-normal"></canvas>
+    <div class="flex flex-col items-center justify-center text-center text-white relative z-10 min-h-screen slit-in-vertical-normal">
         <!-- Text Section -->
         <div class="-mt-12">
             <h2 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3"> 
