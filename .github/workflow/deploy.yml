@@ -4,11 +4,6 @@ on:
   push:
     branches: 
       - main
-    paths:
-      - 'src/**'
-      - 'package.json'
-      - 'svelte.config.js'
-      - '.github/workflows/deploy.yml'
 
 jobs:
   build_site:
