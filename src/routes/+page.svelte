@@ -22,9 +22,9 @@
     
         // Star property constants
         const stars: { x: number; y: number; z: number }[] = [];
-        const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8; // Number of stars
-        const STAR_COLOR = '#fff'; // Star color
-        const STAR_SIZE = 3; // Base size of stars
+        const STAR_COUNT = (window.innerWidth + window.innerHeight) / 5; // Number of stars
+        const STAR_COLOR = '#f5f5f5 '; // Star color
+        const STAR_SIZE = 2.6; // Base size of stars
         const STAR_MIN_SCALE = 0.2; // Minimum scale factor
         const OVERFLOW_THRESHOLD = 50; // Threshold for recycling stars
     
@@ -41,7 +41,7 @@
             y: 0, // Current y-direction velocity
             tx: 0, // Target x-direction velocity
             ty: 0, // Target y-direction velocity
-            z: 0.0005, // Base speed for stars
+            z: 0.0001, // Base speed for stars
         };
     
         let touchInput = false;
@@ -68,8 +68,8 @@
             const deltaX = x - pointerX;
             const deltaY = y - pointerY;
     
-            velocity.tx += (deltaX / 8) * (touchInput ? 1 : -1);
-            velocity.ty += (deltaY / 8) * (touchInput ? 1 : -1);
+            velocity.tx += (deltaX / 60) * (touchInput ? 1 : -1);
+            velocity.ty += (deltaY / 60) * (touchInput ? 1 : -1);
             }
             pointerX = x;
             pointerY = y;
@@ -114,8 +114,8 @@
         localContext.strokeStyle = STAR_COLOR; // Star color
         localContext.moveTo(star.x, star.y);
 
-        let tailX = velocity.x * 2; // Length of the star's "tail" in x-direction
-        let tailY = velocity.y * 2; // Length of the star's "tail" in y-direction
+        let tailX = velocity.x * 1.2; // Length of the star's "tail" in x-direction
+        let tailY = velocity.y * 1.2; // Length of the star's "tail" in y-direction
 
         if (Math.abs(tailX) < 0.1) tailX = 0.5;
         if (Math.abs(tailY) < 0.1) tailY = 0.5;
@@ -127,11 +127,11 @@
 
     // Main animation loop
     function animate() {
-        velocity.tx *= 0.96; // Damping for smoother velocity changes
-        velocity.ty *= 0.96;
+        velocity.tx *= 0.98; // Damping for smoother velocity changes
+        velocity.ty *= 0.98;
 
-        velocity.x += (velocity.tx - velocity.x) * 0.8;
-        velocity.y += (velocity.ty - velocity.y) * 0.8;
+        velocity.x += (velocity.tx - velocity.x) * 0.04;
+        velocity.y += (velocity.ty - velocity.y) * 0.04;
 
         stars.forEach((star) => {
         star.x += velocity.x * star.z; // Adjust x-position based on velocity and depth
@@ -174,87 +174,64 @@
     localCanvas.addEventListener('mouseleave', onMouseLeave);
     });
 </script>
-  
 
-
+Temporariliy remove animations:
+fade-in-normal
+slit-in-vertical-normal
+slit-in-vertical-normal
   <div class="min-h-screen relative bg-black overflow-hidden">
     <canvas id="stars" class="absolute inset-0 pointer-events-none"></canvas>
     <div class="flex flex-col items-center justify-center text-center text-white relative z-10 min-h-screen">
         <!-- Text Section -->
-        <div class="space-y-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light"> 
+        <div class="-mt-12">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3"> 
                 Hi, my name is
             </h2>
-            <h1 class="text-6xl sm:text-7xl md:text-8xl font-bold">
+            <h1 class="text-7xl sm:text-8xl md:text-9xl font-black mb-12">
                 Casey Dane
             </h1>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-medium text-center "> I am a software&nbsp;
+            <h3 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-10"> I'm a software&nbsp;
                 <span class="typewriter thick"></span>
             </h3>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-light">
-                Currently I am a student at CSUF
-            </h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-2">
+                Currently, I'm studying Computer Science at California State University, Fullerton.</h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-4">
+                Connect with me through the links below!</h3>
+            <!-- <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-4">
+                Take a look at my latest projects and connect with me through the links below!</h3> -->
         </div>
 
         <!-- Buttons Section -->
-        <div class="mt-8 space-x-4">
+        <div class="mt-10 space-x-7 text-md sm:text-lg md:text-xl">
             <a
-                href="your_resume_link_here"
+                href="/resume.pdf"
                 target="_blank"
-                class="px-6 py-3 bg-gray-700 text-white  font-bold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
+                class="px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
             >
                 Resume
             </a>
             <a
-                href="your_linkedin_link_here"
+                href="https://www.linkedin.com/in/casey-dane/"
                 target="_blank"
-                class="px-6 py-3 bg-gray-700 text-white   font-bold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
+                class="px-6 py-3 bg-gray-700 text-white   font-semibold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
             >
                 LinkedIn
             </a>
             <a
-                href="your_github_link_here"
+                href="https://github.com/Ryu-134"
                 target="_blank"
-                class="px-6 py-3 bg-gray-700 text-white  font-bold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
+                class="px-6 py-3 bg-gray-700 text-white  font-semibold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
             >
                 GitHub
             </a>
             <a
-                href="mailto:your_email_here"
-                class="px-6 py-3 bg-gray-700 text-white  font-bold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
+                href="mailto:caseydane134@gmail.com"
+                class="px-6 py-3 bg-gray-700 text-white  font-semibold rounded-lg shadow-lg hover:bg-white hover:text-gray-700 transition"
             >
                 Email
             </a>
         </div>
     </div>
 </div>
-
-
-
-<!-- <div class="min-h-screen overflow-hidden">
-    <canvas id="stars"></canvas>
-    <div class= "flex flex-col">
-        <div class="flex text-white">
-            <h2>Hi my name is,</h2>
-            <h1>Casey Dane</h1>
-            <h3>I am an aspiring CS student at CSUF</h3>
-        </div>
-        <div> -->
-            <!-- Buttons to link to resume, linkdIn, GitHub, and open default email application of system with my email listed -->
-            <!-- <button on:click goto{() => }>Resume</button>   
-            <button on:click goto{() => }>LinkdIn</button>
-            <button on:click goto{() => }>GitHub</button>
-            <button on:click goto{() => }>Email</button>   </div> -->
-      
-
-        <!-- Project Section: TDL at a later time, dont have enough projects to list
-            <div>
-            Place projects created down below
-                Add arrow when clicked takes you to lower part of home page with cards for each project
-            </div> -->
-            
-    <!-- </div>
-</div> -->
-
 
 
