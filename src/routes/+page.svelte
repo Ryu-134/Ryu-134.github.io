@@ -130,8 +130,8 @@
         velocity.tx *= 0.98; // Damping for smoother velocity changes
         velocity.ty *= 0.98;
 
-        velocity.x += (velocity.tx - velocity.x) * 0.04;
-        velocity.y += (velocity.ty - velocity.y) * 0.04;
+        velocity.x += (velocity.tx - velocity.x) * 0.03;
+        velocity.y += (velocity.ty - velocity.y) * 0.03;
 
         stars.forEach((star) => {
         star.x += velocity.x * star.z; // Adjust x-position based on velocity and depth
